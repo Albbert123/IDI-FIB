@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MyForm</class>
+ <widget class="QWidget" name="MyForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>819</width>
+    <height>726</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>IDI-Lab</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <widget class="MyGLWidget" name="widget" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>50</width>
+       <height>50</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="MyLabel" name="label">
+       <property name="minimumSize">
+        <size>
+         <width>200</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QSpinBox" name="spinBox_2">
+         <property name="maximum">
+          <number>255</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinBox_3">
+         <property name="maximum">
+          <number>255</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinBox">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="maximum">
+          <number>255</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>&amp;Sortir</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MyGLWidget</class>
+   <extends>QWidget</extends>
+   <header>MyGLWidget.h</header>
+   <container>1</container>
+   <slots>
+    <signal>setPsi(int)</signal>
+    <signal>setTheta(int)</signal>
+    <slot>zoom(int)</slot>
+    <slot>lego()</slot>
+    <slot>optica()</slot>
+    <slot>changeEscala(int)</slot>
+    <slot>changePsi(int)</slot>
+    <slot>changeTheta(int)</slot>
+    <slot>setColorTerra(int,int,int)</slot>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>MyLabel</class>
+   <extends>QLabel</extends>
+   <header location="global">MyLabel.h</header>
+   <slots>
+    <signal>envia_background(int,int,int)</signal>
+    <slot>set_r(int)</slot>
+    <slot>set_g(int)</slot>
+    <slot>set_b(int)</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MyForm</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>656</x>
+     <y>715</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>810</x>
+     <y>660</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBox_2</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label</receiver>
+   <slot>set_r(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>632</x>
+     <y>123</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>634</x>
+     <y>56</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBox_3</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label</receiver>
+   <slot>set_g(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>688</x>
+     <y>124</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>687</x>
+     <y>72</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label</receiver>
+   <slot>set_b(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>777</x>
+     <y>139</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>767</x>
+     <y>81</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>label</sender>
+   <signal>envia_background(int,int,int)</signal>
+   <receiver>widget</receiver>
+   <slot>setColorTerra(int,int,int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>626</x>
+     <y>19</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>555</x>
+     <y>21</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
